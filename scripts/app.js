@@ -1,5 +1,5 @@
 let db;
-const request = window.indexedDB.open("UniversalCharacterSheetDB", 10);
+const request = indexedDB.open("UniversalCharacterSheetDB", 10);
 
 function connectToDB(callback) {
   request.onerror = function(event) {
