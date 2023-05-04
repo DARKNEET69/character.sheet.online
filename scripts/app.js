@@ -18,7 +18,8 @@ function connectToDB(callback) {
 
   request.onupgradeneeded = function(event) {
     const db = event.target.result;  
-    const objectStore = db.createObjectStore("characters", { keyPath: "id"});
+    const characterSheetsObjectStore = db.createObjectStore("characterSheets", { keyPath: "id"});
+    const sheetTemplatesobjectStore = db.createObjectStore("sheetTemplates", { keyPath: "id"});
     console.log("Object store created successfully");
 
     callback();
@@ -53,8 +54,8 @@ function deleteCharacterData(characterId) {
 
 function changeCharacterData(method, value) {
   const db = request.result;
-  let transaction = db.transaction(["characters"], ((method == "get" || method == "getAll") ? "readonly" : "readwrite"));
-  let objectStore = transaction.objectStore("characters");
+  let transaction = db.transaction(["characterSheets"], ((method == "get" || method == "getAll") ? "readonly" : "readwrite"));
+  let objectStore = transaction.objectStore("characterSheets");
   let changeRequest;
   
   switch(method) {
@@ -236,8 +237,8 @@ function saveBlockSettings(e) {
 }
 
 function saveChanges() {
-  const transaction = db.transaction(["characters"], "readwrite");
-  const objectStore = transaction.objectStore("characters");
+  const transaction = db.transaction(["characterSheets"], "readwrite");
+  const objectStore = transaction.objectStore("characterSheets");
   const request = objectStore.put(currentCharacter);
   request.onerror = function(event) {
     console.error("Error saving character: " + event.target.errorCode);

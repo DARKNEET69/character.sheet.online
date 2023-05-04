@@ -77,8 +77,8 @@
 			let currentCharacter;
 			connectToDB(loadCharacter);
 			function loadCharacter() {
-				const transaction = db.transaction(["characters"], "readonly");
-				const objectStore = transaction.objectStore("characters");
+				const transaction = db.transaction(["characterSheets"], "readonly");
+				const objectStore = transaction.objectStore("characterSheets");
 				const request = objectStore.getAll();				
 				request.onerror = function(event) {
 					console.error("Error getting character: " + event.target.errorCode);

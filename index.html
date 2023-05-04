@@ -126,8 +126,8 @@
 				let cloneCharacter = structuredClone(character);
 				cloneCharacter.id = Date.now();
 				cloneCharacter.name = cloneCharacter.name + " Clone";
-				let transaction = db.transaction(["characters"], "readwrite");
-				let objectStore = transaction.objectStore("characters");
+				let transaction = db.transaction(["characterSheets"], "readwrite");
+				let objectStore = transaction.objectStore("characterSheets");
 				let request = objectStore.add(cloneCharacter);
 				request.onerror = function(event) {
 					console.error("Error clone character: " + event.target.errorCode);
@@ -139,8 +139,8 @@
 			}
 			function deleteCharacter(characterId){
 				document.getElementById("characterCardDialog").close();
-				let transaction = db.transaction(["characters"], "readwrite");
-				let objectStore = transaction.objectStore("characters");
+				let transaction = db.transaction(["characterSheets"], "readwrite");
+				let objectStore = transaction.objectStore("characterSheets");
 				let request = objectStore.delete(characterId);
 				request.onerror = function(event) {
 					console.error("Error deleting character: " + event.target.errorCode);
