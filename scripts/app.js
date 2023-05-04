@@ -1,5 +1,9 @@
+if (!window.indexedDB) {
+  console.log("IndexedDB is not supported.");
+}
+
 let db;
-const request = window.indexedDB.open("UniversalCharacterSheetDB", 11);
+const request = window.indexedDB.open("universalCharacterSheetDB", 1);
 
 function connectToDB(callback) {
   request.onerror = function(event) {
