@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+:root {
+    color-scheme: light;
+	--page-bg-light-color: #E6E6F0;
+    --block-bg-light-color: #FFFFFF;
+    --block-shadow-light: 3px 4px 5px rgba(0, 0, 0, 0.1);
+    --block-border-light: 1px solid var(--page-bg-light-color);
+    --major-text-light-color: #1E1E28;
+    --minor-text-light-color: #BEBEC8;
+    --navbar-height: 70px;
+    --block-height: 80px;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: var(--major-text-light-color);
+	background: var(--page-bg-light-color);
+    height: 100vh;
+	display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+::-webkit-scrollbar { width: 0; }
+
+.navbar, .subbar {
+    box-sizing: border-box;
+    height: var(--navbar-height);
+    width: 100%;
+    z-index: 100;    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    background: var(--block-bg-light-color);
+    border: var(--block-border-light);
+    padding:5px;
+    margin: 0;
+}
+
+.navbar {    
+    bottom: 0;
+    left: 0;
+    justify-content: space-around;
+    box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px 10px 0px 0px;
+}
+
+.subbar {
+    top: 0;
+    left: 0;
+    justify-content: space-between;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 0px 0px 10px 10px;
+}
+
+.subbar div h1 {
+    width: 100%;
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+main {
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.block {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    background: var(--block-bg-light-color);
+    border: var(--block-border-light);
+    box-shadow: var(--block-shadow-light);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.block-title {
+    color: var(--minor-text-light-color);
+    font-weight: bold;
+    text-align: center;
+}
+
+select, .block-text, .block-label, .block-number, .block-calc {
+    min-height: 1.2em;
+    padding: 5px;
+    background-color: var(--page-bg-light-color);
+    box-shadow: inset var(--block-shadow-light);
+    border: var(--block-border-light);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.block-label, .block-number, .block-calc {
+    text-align: center;
+}
+
+.image-container {
+    flex-shrink: 0;
+    height: 100%;
+    flex-wrap: nowrap;
+    text-align: center;
+    background-color: var(--page-bg-light-color);
+    box-shadow: inset var(--block-shadow-light);
+    border: var(--block-border-light);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+img, svg {
+    max-height: 100%;
+    width: auto;
+}
+
+.navbar div, .subbar div {
+    box-sizing: border-box;
+    height: 100%;
+    width: auto;
+}
+
+.minor-button {
+    box-sizing: border-box;
+    border-radius: 90px;
+    color: var(--minor-text-light-color);
+    cursor: pointer;
+}
+
+.minor-button:hover {
+    color: var(--major-text-light-color);
+}
+
+.bar-title {
+    min-width: 0; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    user-select: none;
+}
+
+.bar-button {
+    border-radius: 90px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.bar-button:hover {
+    box-shadow: inset var(--block-shadow-light);
+}
+
+.bar-button a {
+    color: var(--major-text-light-color);
+}
+
+.card-block {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    box-sizing: border-box;
+    width: 100%;
+    height: var(--block-height);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: var(--block-bg-light-color);
+    border: var(--block-border-light);
+    box-shadow: var(--block-shadow-light);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.card-block:hover {
+    box-shadow: inset var(--block-shadow-light);
+    border: 0;
+}
+
+.character-avatar {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.card-text {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title {
+    width: 100%;
+    height: 2.5em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-weight: bold;
+    text-align: start;
+}
+
+.card-template {
+    font-size: 0.8em;
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+    overflow: hidden;
+    color: var(--minor-text-light-color);
+    text-align: start;
+}
+
+.custom-textarea {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    resize:none;
+}
+
+input, .custom-textarea {
+    border: var(--block-border-light);
+    background: var(--block-bg-light-color);
+    padding: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+input:focus, .custom-textarea:focus, select:focus {
+    outline: none;
+}
+
+input[type="text"], .custom-textarea {
+    vertical-align: middle;
+    background-color: var(--page-bg-light-color);
+    box-shadow: inset var(--block-shadow-light);
+    border-radius: 5px;
+}
+
+input[type="button"] {
+    color: var(--minor-text-light-color);
+    text-align: center;
+    vertical-align: middle;
+    box-shadow: var(--block-shadow-light);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="button"]:hover {
+    box-shadow: inset var(--block-shadow-light);
+}
+
+dialog {
+    border: var(--block-border-light);
+    background: var(--block-bg-light-color);
+    padding: 10px;
+    margin: auto 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    border-radius: 10px;
+    box-shadow: var(--block-shadow-light);
+    width: 100%;
+}
+
+dialog::backdrop {
+    width: 100%;
+    background-color: rgb(0 0 0 / 0.5);
+    backdrop-filter: blur(5px);
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+h2 {
+    font-size: 1.4em;
+}
+
+h3 {
+    font-size: 1.3em;
+}
+
+h4 {
+    font-size: 1.2em;
+}
+
+h5 {
+    font-size: 1.1em;
+}
+
+table {
+    width: 100%;
+    height: auto;
+}
