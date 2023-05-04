@@ -1,5 +1,5 @@
 let db;
-const request = indexedDB.open("UniversalCharacterSheetDB", 10);
+const request = window.indexedDB.open("UniversalCharacterSheetDB", 11);
 
 function connectToDB(callback) {
   request.onerror = function(event) {
@@ -13,15 +13,9 @@ function connectToDB(callback) {
   };
 
   request.onupgradeneeded = function(event) {
-    db = event.target.result;
-  
-    if (!db.objectStoreNames.contains("characters")) {
-      const objectStore = db.createObjectStore("characters", { keyPath: "id", autoIncrement: true });
-      console.log("Object store created successfully");
-    }
-    else{  
-      console.log("Object store update successfully");
-    }
+    db = event.target.result;  
+    const objectStore = db.createObjectStore("characters", { keyPath: "id", autoIncrement: true });
+    console.log("Object store created successfully");
 
     callback();
   };
