@@ -17,8 +17,8 @@ function connectToDB(callback) {
   };
 
   request.onupgradeneeded = function(event) {
-    db = event.target.result;  
-    const objectStore = db.createObjectStore("characters", { keyPath: "id", autoIncrement: true });
+    const db = event.target.result;  
+    const objectStore = db.createObjectStore("characters", { keyPath: "id"});
     console.log("Object store created successfully");
 
     callback();
