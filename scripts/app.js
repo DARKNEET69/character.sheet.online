@@ -22,6 +22,19 @@ function getIndexedDB(callback) {
   };
 }
 
+function deleteIndexedDB() {
+  request = indexedDB.deleteDatabase("universalCharacterSheetDB");
+  request.onsuccess = function () {
+      console.log("Deleted database successfully");
+  };
+  request.onerror = function () {
+      console.log("Couldn't delete database");
+  };
+  request.onblocked = function () {
+      console.log("Couldn't delete database due to the operation being blocked");
+  };
+}
+
 function getCharacterData(characterId) {
   return changeCharacterData("get", characterId);
 }
