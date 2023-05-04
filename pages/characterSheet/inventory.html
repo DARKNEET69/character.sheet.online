@@ -75,7 +75,7 @@
 			document.addEventListener("submit", (e) => saveBlockSettings(e));
 			const selectedCharacterId = localStorage.getItem("selectedCharacterId");
 			let currentCharacter;
-			connectToDB(loadCharacter);
+			getIndexedDB(loadCharacter);
 			function loadCharacter() {
 				const transaction = db.transaction(["characterSheets"], "readonly");
 				const objectStore = transaction.objectStore("characterSheets");

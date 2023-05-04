@@ -1,15 +1,13 @@
-if (!window.indexedDB) {
-  console.log("IndexedDB is not supported.");
-}
-
 let db;
-const request = window.indexedDB.open("universalCharacterSheetDB", 1);
+let request;
 
-function connectToDB(callback) {
+function getIndexedDB(callback) {
+  request = indexedDB.open("universalCharacterSheetDB", 1);
+
   request.onerror = function(event) {
-    console.error("Database error: " + event.target.errorCode);
+    console.error("Database error: " + event.target.errorCode);  
   };
-  
+
   request.onsuccess = function(event) {
     db = event.target.result;
     console.log("Database opened successfully");
@@ -17,12 +15,10 @@ function connectToDB(callback) {
   };
 
   request.onupgradeneeded = function(event) {
-    const db = event.target.result;  
+    db = event.target.result;  
     const characterSheetsObjectStore = db.createObjectStore("characterSheets", { keyPath: "id"});
     const sheetTemplatesobjectStore = db.createObjectStore("sheetTemplates", { keyPath: "id"});
-    console.log("Object store created successfully");
-
-    callback();
+    console.log("Object store created successfully");  
   };
 }
 
@@ -156,7 +152,6 @@ function renderCharacterProperties(characterObject, container) {
               let propertyPath = e.target.getAttribute("propertyPath");
               e.target.value = setCharacterProperty(currentCharacter , propertyPath, blockValue.value);
               console.log(propertyPath + ": " + blockValue.value);
-              saveChanges();
             }
             break;
         }
@@ -188,8 +183,19 @@ function setCharacterProperty(characterObject, propertyPath, propertyValue) {
     if ( !schema[elem] ) schema[elem] = {}
     schema = schema[elem];
   }
-  schema[pList[len-1]].value = propertyValue;
+  switch(pList[len-1]) {
+    case "id":
+    case "name":
+    case "avatar":
+    case "sheet":
+      schema[pList[len-1]] = propertyValue;
+      break;
+    default:
+      schema[pList[len-1]].value = propertyValue;
+      break;
+  }
   console.log(propertyPath + ": " + propertyValue);
+  saveChanges();
   return propertyValue;
 }
 

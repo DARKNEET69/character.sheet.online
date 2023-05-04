@@ -70,13 +70,13 @@
 			let characterCardContainer = document.getElementById("characterCardsContainer");
 			let addCharacterButton = document.getElementById("addCharacterButton");
 			addCharacterButton.onclick = () => addCharacter();
-			connectToDB(updateCharacterCardList);
+			getIndexedDB(updateCharacterCardList);
 			function addCharacter() {
 				let characterObject = structuredClone(defaultCharacterSheet);
 				characterObject.id = Date.now();
 				characterObject.name = "Character " + characterObject.id % 10000;
-				let transaction = db.transaction(["characters"], "readwrite");
-				let objectStore = transaction.objectStore("characters");
+				let transaction = db.transaction(["characterSheets"], "readwrite");
+				let objectStore = transaction.objectStore("characterSheets");
 				let request = objectStore.add(characterObject);
 				request.onerror = function(event) {
 					console.error("Error adding character: " + event.target.errorCode);
@@ -92,8 +92,8 @@
 				window.location.href = "pages/characterSheet/bio.html";
 			}
 			function updateCharacterCardList() {
-				let transaction = db.transaction(["characters"], "readonly");
-				let objectStore = transaction.objectStore("characters");
+				let transaction = db.transaction(["characterSheets"], "readonly");
+				let objectStore = transaction.objectStore("characterSheets");
 				let request = objectStore.getAll();
 				
 				request.onerror = function(event) {
