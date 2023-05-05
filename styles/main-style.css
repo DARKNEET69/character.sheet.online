@@ -12,12 +12,16 @@
     --block-height: 80px;
 }
 
+html {
+    height: -webkit-fill-available;
+}
+
 body {
 	font-family: 'Roboto', sans-serif;
     font-size: 16px;
     color: var(--major-text-light-color);
 	background: var(--page-bg-light-color);
-    height: 100vh;
+    height: -webkit-fill-available;
 	display: flex;
     flex-direction: column;
     margin: 0;
