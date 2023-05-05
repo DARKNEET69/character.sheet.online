@@ -71,7 +71,7 @@ main {
     box-sizing: border-box;
     overflow-x: hidden;
     overflow-y: scroll;
-    height: 100%;
+    height: -webkit-fill-available;
     padding: 10px;
     display: flex;
     flex-direction: column;
