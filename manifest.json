@@ -1,7 +1,7 @@
 {
     "name": "Universal Character Sheet",
-    "short_name": "Character Sheet",
-    "description": "",
+    "short_name": "Universal Character Sheet",
+    "description": "Create dynamic character sheets for any TRPG systems",
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
     "display": "standalone",
