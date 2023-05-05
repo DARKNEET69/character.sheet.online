@@ -4,21 +4,23 @@
     :root {
         --page-bg-color: #E6E6F0;
         --block-bg-color: #FFFFFF;
-        --block-shadow: 3px 4px 5px rgba(0, 0, 0, 0.1);
-        --block-border: 1px solid var(--page-bg-color);
+        --input-bg-color: #E6E6F0;
         --major-text-color: #1E1E28;
         --minor-text-color: #BEBEC8;
+        --block-shadow: 3px 4px 5px rgba(0, 0, 0, 0.1);
+        --block-border: 1px solid var(--page-bg-color);
     }
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --page-bg-color: #000;
-        --block-bg-color: #0f0f0f;
-        --block-shadow: 0;
+        --page-bg-color: #0b0b0b;
+        --block-bg-color: #191919;
+        --input-bg-color: #0b0b0b;
+        --major-text-color: #f7f7f7;
+        --minor-text-color: #8c8c96;
+        --block-shadow: 3px 4px 5px rgba(0, 0, 0, 0.5);
         --block-border: 1px solid var(--page-bg-color);
-        --major-text-color: #FFFFFF;
-        --minor-text-color: #BEBEC8;
     }
 }
 
@@ -267,7 +269,7 @@ input:focus, .custom-textarea:focus, select:focus {
 
 input[type="text"], .custom-textarea {
     vertical-align: middle;
-    background-color: var(--page-bg-color);
+    background-color: var(--input-bg-color);
     box-shadow: inset var(--block-shadow);
     border-radius: 5px;
 }
