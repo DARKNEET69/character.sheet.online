@@ -75,5 +75,17 @@
 				</a>
 			</div>
         </nav>
+
+		<script>
+			if ("serviceWorker" in navigator) {
+				window.addEventListener("load", function () {
+					navigator.serviceWorker
+						.register("../../scripts/serviceWorker.js")
+						.then((registration) => {
+							console.log("SW registration successful");
+						});
+				});
+			}
+		</script>
 	</body>
 </html>
