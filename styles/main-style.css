@@ -1,13 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
 
+@media (prefers-color-scheme: light) {
+    :root {
+        --page-bg-color: #E6E6F0;
+        --block-bg-color: #FFFFFF;
+        --block-shadow: 3px 4px 5px rgba(0, 0, 0, 0.1);
+        --block-border: 1px solid var(--page-bg-color);
+        --major-text-color: #1E1E28;
+        --minor-text-color: #BEBEC8;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --page-bg-color: #000;
+        --block-bg-color: #0f0f0f;
+        --block-shadow: 0;
+        --block-border: 1px solid var(--page-bg-color);
+        --major-text-color: #FFFFFF;
+        --minor-text-color: #BEBEC8;
+    }
+}
+
 :root {
-    color-scheme: light;
-	--page-bg-light-color: #E6E6F0;
-    --block-bg-light-color: #FFFFFF;
-    --block-shadow-light: 3px 4px 5px rgba(0, 0, 0, 0.1);
-    --block-border-light: 1px solid var(--page-bg-light-color);
-    --major-text-light-color: #1E1E28;
-    --minor-text-light-color: #BEBEC8;
+    color-scheme: light dark;
     --navbar-height: 70px;
     --block-height: 80px;
 }
@@ -19,8 +35,8 @@ html {
 body {
 	font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    color: var(--major-text-light-color);
-	background: var(--page-bg-light-color);
+    color: var(--major-text-color);
+	background: var(--page-bg-color);
     height: -webkit-fill-available;
 	display: flex;
     flex-direction: column;
@@ -38,8 +54,8 @@ body {
     flex-direction: row;
     align-items: center;
     gap: 10px;
-    background: var(--block-bg-light-color);
-    border: var(--block-border-light);
+    background: var(--block-bg-color);
+    border: var(--block-border);
     padding:5px;
     margin: 0;
 }
@@ -86,9 +102,9 @@ main {
     box-sizing: border-box;
     width: 100%;
     padding: 10px;
-    background: var(--block-bg-light-color);
-    border: var(--block-border-light);
-    box-shadow: var(--block-shadow-light);
+    background: var(--block-bg-color);
+    border: var(--block-border);
+    box-shadow: var(--block-shadow);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -96,7 +112,7 @@ main {
 }
 
 .block-title {
-    color: var(--minor-text-light-color);
+    color: var(--minor-text-color);
     font-weight: bold;
     text-align: center;
 }
@@ -104,9 +120,9 @@ main {
 select, .block-text, .block-label, .block-number, .block-calc {
     min-height: 1.2em;
     padding: 5px;
-    background-color: var(--page-bg-light-color);
-    box-shadow: inset var(--block-shadow-light);
-    border: var(--block-border-light);
+    background-color: var(--page-bg-color);
+    box-shadow: inset var(--block-shadow);
+    border: var(--block-border);
     border-radius: 5px;
     overflow: hidden;
 }
@@ -120,9 +136,9 @@ select, .block-text, .block-label, .block-number, .block-calc {
     height: 100%;
     flex-wrap: nowrap;
     text-align: center;
-    background-color: var(--page-bg-light-color);
-    box-shadow: inset var(--block-shadow-light);
-    border: var(--block-border-light);
+    background-color: var(--page-bg-color);
+    box-shadow: inset var(--block-shadow);
+    border: var(--block-border);
     border-radius: 5px;
     overflow: hidden;
 }
@@ -141,12 +157,12 @@ img, svg {
 .minor-button {
     box-sizing: border-box;
     border-radius: 90px;
-    color: var(--minor-text-light-color);
+    color: var(--minor-text-color);
     cursor: pointer;
 }
 
 .minor-button:hover {
-    color: var(--major-text-light-color);
+    color: var(--major-text-color);
 }
 
 .bar-title {
@@ -164,11 +180,11 @@ img, svg {
 }
 
 .bar-button:hover {
-    box-shadow: inset var(--block-shadow-light);
+    box-shadow: inset var(--block-shadow);
 }
 
 .bar-button a {
-    color: var(--major-text-light-color);
+    color: var(--major-text-color);
 }
 
 .card-block {
@@ -183,15 +199,15 @@ img, svg {
     align-items: center;
     gap: 10px;
     padding: 10px;
-    background: var(--block-bg-light-color);
-    border: var(--block-border-light);
-    box-shadow: var(--block-shadow-light);
+    background: var(--block-bg-color);
+    border: var(--block-border);
+    box-shadow: var(--block-shadow);
     border-radius: 10px;
     cursor: pointer;
 }
 
 .card-block:hover {
-    box-shadow: inset var(--block-shadow-light);
+    box-shadow: inset var(--block-shadow);
     border: 0;
 }
 
@@ -224,7 +240,7 @@ img, svg {
     text-overflow: ellipsis; 
     white-space: nowrap; 
     overflow: hidden;
-    color: var(--minor-text-light-color);
+    color: var(--minor-text-color);
     text-align: start;
 }
 
@@ -238,8 +254,8 @@ img, svg {
 }
 
 input, .custom-textarea {
-    border: var(--block-border-light);
-    background: var(--block-bg-light-color);
+    border: var(--block-border);
+    background: var(--block-bg-color);
     padding: 5px;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
@@ -251,33 +267,33 @@ input:focus, .custom-textarea:focus, select:focus {
 
 input[type="text"], .custom-textarea {
     vertical-align: middle;
-    background-color: var(--page-bg-light-color);
-    box-shadow: inset var(--block-shadow-light);
+    background-color: var(--page-bg-color);
+    box-shadow: inset var(--block-shadow);
     border-radius: 5px;
 }
 
 input[type="button"] {
-    color: var(--minor-text-light-color);
+    color: var(--minor-text-color);
     text-align: center;
     vertical-align: middle;
-    box-shadow: var(--block-shadow-light);
+    box-shadow: var(--block-shadow);
     border-radius: 5px;
     cursor: pointer;
 }
 
 input[type="button"]:hover {
-    box-shadow: inset var(--block-shadow-light);
+    box-shadow: inset var(--block-shadow);
 }
 
 dialog {
-    border: var(--block-border-light);
-    background: var(--block-bg-light-color);
+    border: var(--block-border);
+    background: var(--block-bg-color);
     padding: 10px;
     margin: auto 10px;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     border-radius: 10px;
-    box-shadow: var(--block-shadow-light);
+    box-shadow: var(--block-shadow);
     width: 100%;
 }
 

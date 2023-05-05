@@ -145,7 +145,7 @@ function renderCharacterProperties(characterObject, container) {
             addBlockButton.value = "Add item";
             break;
           case "item":
-            blockElement.style.border = "2px dashed var(--page-bg-light-color)";
+            blockElement.style.border = "2px dashed var(--page-bg-color)";
             blockElement.style.boxShadow = "none";
             blockValue.style.display = "flex";
             blockValue.style.flexDirection = "row";
