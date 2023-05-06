@@ -76,11 +76,13 @@ registerRoute(
 
 // Catch routing errors, like if the user is offline
 setCatchHandler(async ({ event }) => {
+    /*
     // Return the precached offline page if a document is being requested
     if (event.request.destination === "document") {
         return matchPrecache("https://darkneet69.github.io/universal-character-sheet/offline.html");
     }
 
     return Response.error();
+    */
 });
 
