@@ -71,7 +71,7 @@ body {
     border-top: var(--block-border);
     box-shadow: 0 -5px 5px var(--block-shadow-color);
     border-radius: 10px 10px 0px 0px;
-    padding-bottom: env(safe-area-inset-bottom);
+    padding-bottom: max(5px, env(safe-area-inset-bottom));
 }
 
 .subbar {
@@ -81,7 +81,7 @@ body {
     border-bottom: var(--block-border);
     box-shadow: 0 5px 5px var(--block-shadow-color);
     border-radius: 0px 0px 10px 10px;
-    padding-top: env(safe-area-inset-top);
+    padding-top: max(5px, env(safe-area-inset-top));
 }
 
 .subbar div h1 {
