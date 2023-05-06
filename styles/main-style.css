@@ -9,6 +9,7 @@
         --minor-text-color: #BEBEC8;
         --block-shadow: 3px 4px 5px rgba(0, 0, 0, 0.1);
         --block-border: 1px solid var(--page-bg-color);
+        --block-shadow-color: rgba(0, 0, 0, 0.1);
     }
 }
 
@@ -21,6 +22,7 @@
         --minor-text-color: #8c8c96;
         --block-shadow: 3px 4px 5px rgba(0, 0, 0, 0.5);
         --block-border: 1px solid var(--page-bg-color);
+        --block-shadow-color: rgba(0, 0, 0, 0.5);
     }
 }
 
@@ -32,11 +34,12 @@
 
 html {
     height: -webkit-fill-available;
+	background: var(--block-bg-color);
 }
 
 body {
 	font-family: 'Roboto', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     color: var(--major-text-color);
 	background: var(--page-bg-color);
     height: -webkit-fill-available;
@@ -67,7 +70,7 @@ body {
     left: 0;
     justify-content: space-around;
     border-top: var(--block-border);
-    box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 -5px 5px var(--block-shadow-color);
     border-radius: 10px 10px 0px 0px;
 }
 
@@ -76,7 +79,7 @@ body {
     left: 0;
     justify-content: space-between;
     border-bottom: var(--block-border);
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 5px var(--block-shadow-color);
     border-radius: 0px 0px 10px 10px;
 }
 
@@ -122,6 +125,7 @@ main {
 }
 
 select, .block-text, .block-label, .block-number, .block-calc {
+    box-sizing: border-box;
     min-height: 1.2em;
     padding: 5px;
     background-color: var(--page-bg-color);
@@ -263,7 +267,7 @@ input, .custom-textarea {
     background: var(--block-bg-color);
     padding: 5px;
     font-family: 'Roboto', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 input:focus, .custom-textarea:focus, select:focus {
@@ -297,7 +301,7 @@ dialog {
     padding: 10px;
     margin: auto 10px;
     font-family: 'Roboto', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 10px;
     box-shadow: var(--block-shadow);
     width: 100%;
@@ -310,23 +314,23 @@ dialog::backdrop {
 }
 
 h1 {
-    font-size: 1.5em;
+    font-size: 20px;
 }
 
 h2 {
-    font-size: 1.4em;
+    font-size: 19em;
 }
 
 h3 {
-    font-size: 1.3em;
+    font-size: 18em;
 }
 
 h4 {
-    font-size: 1.2em;
+    font-size: 17em;
 }
 
 h5 {
-    font-size: 1.1em;
+    font-size: 16em;
 }
 
 table {
