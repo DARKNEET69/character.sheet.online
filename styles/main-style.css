@@ -274,7 +274,7 @@ input[type="text"], .custom-textarea {
     border-radius: 5px;
 }
 
-input[type="button"] {
+input[type="button"], input[type="submit"] {
     color: var(--minor-text-color);
     text-align: center;
     vertical-align: middle;
@@ -283,11 +283,12 @@ input[type="button"] {
     cursor: pointer;
 }
 
-input[type="button"]:hover {
+input[type="button"]:hover, input[type="submit"]:hover {
     box-shadow: inset var(--block-shadow);
 }
 
 dialog {
+    color: var(--minor-text-color);
     border: var(--block-border);
     background: var(--block-bg-color);
     padding: 10px;
