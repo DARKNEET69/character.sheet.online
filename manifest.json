@@ -6,8 +6,8 @@
     "background_color": "#191919",
     "display": "standalone",
     "orientation": "any",
-    "scope": "https://darkneet69.github.io/character.sheet.online",
-    "start_url": "https://darkneet69.github.io/character.sheet.online",
+    "scope": "https://darkneet69.github.io/character.sheet.online/",
+    "start_url": "https://darkneet69.github.io/character.sheet.online/",
     "icons": [
         {
             "src": "icons/icon_192.png",
