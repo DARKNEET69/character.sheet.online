@@ -159,7 +159,10 @@ function renderCharacterProperties(characterObject, container) {
             blockElement.style.border = "0";
             blockElement.style.boxShadow = "none";
             blockValue = document.createElement("input");          
-            if (characterObject[propertyBlock].type == "number") {blockValue.type = "number";}
+            if (characterObject[propertyBlock].type == "number") {
+              blockValue.type = "number";
+              blockValue.setAttribute("pattern", "\\d*");
+            }
             blockValue.value = characterObject[propertyBlock].value;
             blockValue.onchange = function(e) {
               let propertyPath = e.target.getAttribute("propertyPath");
