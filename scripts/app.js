@@ -113,24 +113,8 @@ function renderCharacterProperties(characterObject, container) {
     for (let propertyBlock in characterObject) {
       if (typeof characterObject[propertyBlock] === "object") {
   
-        let blockElement = document.createElement("div");
-        blockElement.classList.add("block");
-  
-        let blockTitle = document.createElement("div");
-        blockTitle.classList.add("block-title");
-        blockTitle.classList.add("minor-button");
-        blockTitle.innerHTML = characterObject[propertyBlock].title;
-        blockTitle.setAttribute("propertyPath", container.getAttribute("propertyPath") + "." + propertyBlock);
-        blockTitle.addEventListener("click", function(e) {
-          let propertyPath = e.target.getAttribute("propertyPath");
-          console.log("edit " + propertyPath);
-          propertyPath = propertyPath.split('.');
-          let blockName = propertyPath[propertyPath.length - 1];
-          propertyPath = propertyPath.join(".");
-          let block = getCharacterProperty(currentCharacter, propertyPath);        
-          openBlockSettingsDialog(e, blockName, block.title, block.type);
-        });
-  
+        let blockElement;  
+        let blockTitle;  
         let blockValue = document.createElement("div");
         let addBlockButton = document.createElement("input");
         addBlockButton.type = "button";
@@ -139,12 +123,17 @@ function renderCharacterProperties(characterObject, container) {
   
         switch(characterObject[propertyBlock].type) {
           case "section":
+            blockElement = document.createElement("div");
+            blockTitle = document.createElement("div");
             blockValue.style.display = "flex";
             blockValue.style.flexDirection = "column";
             blockValue.style.gap = "10px";
             addBlockButton.value = "Add item";
             break;
           case "item":
+            blockElement = document.createElement("fieldset");
+            blockTitle = document.createElement("legend");
+            blockTitle.style.textAlign = "start";
             blockElement.style.border = "2px dashed var(--page-bg-color)";
             blockElement.style.boxShadow = "none";
             blockValue.style.display = "flex";
@@ -156,6 +145,8 @@ function renderCharacterProperties(characterObject, container) {
           case "text":
           case "number":
           case "calc":
+            blockElement = document.createElement("div");
+            blockTitle = document.createElement("div");
             blockElement.style.border = "0";
             blockElement.style.boxShadow = "none";
             blockValue = document.createElement("input");          
@@ -171,6 +162,20 @@ function renderCharacterProperties(characterObject, container) {
             }
             break;
         }
+        blockTitle.classList.add("block-title");
+        blockTitle.classList.add("minor-button");
+        blockTitle.innerHTML = characterObject[propertyBlock].title;
+        blockTitle.setAttribute("propertyPath", container.getAttribute("propertyPath") + "." + propertyBlock);
+        blockTitle.addEventListener("click", function(e) {
+          let propertyPath = e.target.getAttribute("propertyPath");
+          console.log("edit " + propertyPath);
+          propertyPath = propertyPath.split('.');
+          let blockName = propertyPath[propertyPath.length - 1];
+          propertyPath = propertyPath.join(".");
+          let block = getCharacterProperty(currentCharacter, propertyPath);        
+          openBlockSettingsDialog(e, blockName, block.title, block.type);
+        });
+        blockElement.classList.add("block");
         blockValue.classList.add(`block-${characterObject[propertyBlock].type}`);
         blockValue.setAttribute("propertyPath", container.getAttribute("propertyPath") + "." + propertyBlock);
         blockValue.style.width = "100%";
