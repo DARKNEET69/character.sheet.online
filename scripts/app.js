@@ -118,6 +118,7 @@ function renderCharacterProperties(characterObject, container) {
         let blockValue = document.createElement("div");
         let addBlockButton = document.createElement("input");
         addBlockButton.type = "button";
+        addBlockButton.style.height = "fit-content";
         addBlockButton.setAttribute("propertyPath", container.getAttribute("propertyPath") + "." + propertyBlock);
         addBlockButton.addEventListener("click", (e) => openBlockSettingsDialog(e));
   
@@ -131,15 +132,15 @@ function renderCharacterProperties(characterObject, container) {
             addBlockButton.value = "Add item";
             break;
           case "item":
-            blockElement = document.createElement("fieldset");
-            blockTitle = document.createElement("legend");
+            blockElement = document.createElement("div");
+            blockTitle = document.createElement("div");
             blockTitle.style.textAlign = "start";
             blockElement.style.border = "2px dashed var(--page-bg-color)";
             blockElement.style.boxShadow = "none";
             blockValue.style.display = "flex";
             blockValue.style.flexDirection = "row";
             blockValue.style.gap = "10px";
-            addBlockButton.value = "Add parameter";
+            addBlockButton.value = "➕";
             break;
           case "label":
           case "text":
@@ -181,9 +182,9 @@ function renderCharacterProperties(characterObject, container) {
         blockValue.style.width = "100%";
         blockElement.appendChild(blockTitle);
         blockElement.appendChild(blockValue);
-        if (addBlockButton.value != "") { blockElement.appendChild(addBlockButton); }
         container.appendChild(blockElement);
         if (typeof characterObject[propertyBlock].value === 'object') { renderBase(characterObject[propertyBlock].value, blockValue) };
+        if (addBlockButton.value != "") { blockValue.appendChild(addBlockButton); }
       }
     }
   }
