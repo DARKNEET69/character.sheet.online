@@ -143,7 +143,6 @@ function renderCharacterProperties(characterObject, container) {
             addBlockButton.value = "➕";
             break;
           case "label":
-          case "text":
           case "number":
           case "calc":
             blockElement = document.createElement("div");
@@ -158,67 +157,68 @@ function renderCharacterProperties(characterObject, container) {
             blockValue.value = characterObject[propertyBlock].value;
             blockValue.onchange = function(e) {
               let propertyPath = e.target.getAttribute("propertyPath");
-              e.target.value = setCharacterProperty(currentCharacter , propertyPath, blockValue.value);
-              console.log(propertyPath + ": " + blockValue.value);
+              setCharacterProperty(propertyPath, e.target.value);
+              console.log(propertyPath + ": " + e.target.value);
             }
             break;
+          case "text":
+            blockElement = document.createElement("div");
+            blockTitle = document.createElement("div");
+            blockElement.style.border = "0";
+            blockElement.style.boxShadow = "none";
+            blockValue = document.createElement("div");
+            blockValue.setAttribute("contenteditable", "true");
+            blockValue.innerHTML = characterObject[propertyBlock].value == "undefined" ? "" : characterObject[propertyBlock].value;
+            blockValue.oninput = function(e) {
+              let propertyPath = e.target.getAttribute("propertyPath");
+              setCharacterProperty(propertyPath, e.target.innerHTML);
+              console.log(propertyPath + ": " + e.target.innerHTML);
+            }
+            break;
+          case "button":
+            blockElement = document.createElement("input");
+            blockElement.type = "button"
+            break;
         }
-        blockTitle.classList.add("block-title");
-        blockTitle.classList.add("minor-button");
-        blockTitle.innerHTML = characterObject[propertyBlock].title;
-        blockTitle.setAttribute("propertyPath", container.getAttribute("propertyPath") + "." + propertyBlock);
-        blockTitle.addEventListener("click", function(e) {
-          let propertyPath = e.target.getAttribute("propertyPath");
-          console.log("edit " + propertyPath);
-          propertyPath = propertyPath.split('.');
-          let blockName = propertyPath[propertyPath.length - 1];
-          propertyPath = propertyPath.join(".");
-          let block = getCharacterProperty(currentCharacter, propertyPath);        
-          openBlockSettingsDialog(e, blockName, block.title, block.type);
-        });
-        blockElement.classList.add("block");
-        blockValue.classList.add(`block-${characterObject[propertyBlock].type}`);
-        blockValue.setAttribute("propertyPath", container.getAttribute("propertyPath") + "." + propertyBlock);
-        blockValue.style.width = "100%";
-        blockElement.appendChild(blockTitle);
-        blockElement.appendChild(blockValue);
+
+        if (characterObject[propertyBlock].type == "button") {
+          blockElement.value = characterObject[propertyBlock].title;
+          blockElement.setAttribute("onclick", characterObject[propertyBlock].value);
+          blockElement.style.color = "var(--major-text-color)";
+        }
+        else {
+          blockTitle.classList.add("block-title");
+          blockTitle.classList.add("minor-button");
+          if (characterObject[propertyBlock].title == "") {
+            blockTitle.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="15" height="15" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve"><g><path d="M1.172 19.119A4 4 0 0 0 0 21.947V24h2.053a4 4 0 0 0 2.828-1.172L18.224 9.485l-3.709-3.709ZM23.145.855a2.622 2.622 0 0 0-3.71 0l-3.506 3.507 3.709 3.709 3.507-3.506a2.622 2.622 0 0 0 0-3.71Z" fill="currentColor" data-original="#000000"></path></g></svg>`;
+            blockTitle.style.alignSelf = "end";
+          }
+          else {
+            blockTitle.innerHTML = characterObject[propertyBlock].title;
+          }
+          blockTitle.setAttribute("propertyPath", container.getAttribute("propertyPath") + "." + propertyBlock);
+          blockTitle.addEventListener("click", function(e) {
+            let propertyPath = e.currentTarget.getAttribute("propertyPath");
+            console.log("edit " + propertyPath);
+            propertyPath = propertyPath.split('.');
+            let blockName = propertyPath[propertyPath.length - 1];
+            propertyPath = propertyPath.join(".");
+            let block = getCharacterProperty(propertyPath);        
+            openBlockSettingsDialog(e, blockName, block.title, block.type);
+          });
+          blockElement.classList.add("block");
+          blockValue.classList.add(`block-${characterObject[propertyBlock].type}`);
+          blockValue.setAttribute("propertyPath", container.getAttribute("propertyPath") + "." + propertyBlock);
+          blockValue.style.width = "100%";
+          blockElement.appendChild(blockTitle);
+          blockElement.appendChild(blockValue);
+        }
         container.appendChild(blockElement);
         if (typeof characterObject[propertyBlock].value === 'object') { renderBase(characterObject[propertyBlock].value, blockValue) };
         if (addBlockButton.value != "") { blockValue.appendChild(addBlockButton); }
       }
     }
   }
-}
-
-function getCharacterProperty(characterObject, propertyPath) {
-  propertyPath = propertyPath.replaceAll(".", ".value.");
-  propertyPath = propertyPath.split(".");
-  return propertyPath.reduce((acc, el) => acc = acc[el], characterObject);
-}
-
-function setCharacterProperty(characterObject, propertyPath, propertyValue) {
-  let schema = characterObject;
-  let pList = propertyPath.replaceAll(".", ".value.").split(".");
-  let len = pList.length;
-  for (let i = 0; i < len-1; i++) {
-    let elem = pList[i];
-    if ( !schema[elem] ) schema[elem] = {}
-    schema = schema[elem];
-  }
-  switch(pList[len-1]) {
-    case "id":
-    case "name":
-    case "avatar":
-    case "sheet":
-      schema[pList[len-1]] = propertyValue;
-      break;
-    default:
-      schema[pList[len-1]].value = propertyValue;
-      break;
-  }
-  console.log(propertyPath + ": " + propertyValue);
-  saveChanges();
-  return propertyValue;
 }
 
 function openBlockSettingsDialog(e, name = "", title = "", type = "section") {
@@ -276,6 +276,49 @@ function saveChanges() {
   };
 }
 
+//--- users functions ---//
+
+function roll(dice, count) {
+  let sum = 0;
+  for (let i = 1; i <= count; i++) {
+    sum += Math.floor(Math.random() * dice);
+  }
+  return sum;
+}
+
+function getCharacterProperty(propertyPath) {
+  propertyPath = propertyPath.replaceAll(".", ".value.");
+  propertyPath = propertyPath.split(".");
+  return propertyPath.reduce((acc, el) => acc = acc[el], currentCharacter);
+}
+
+function setCharacterProperty(propertyPath, propertyValue) {
+  let schema = currentCharacter;
+  let pList = propertyPath.replaceAll(".", ".value.").split(".");
+  let len = pList.length;
+  for (let i = 0; i < len-1; i++) {
+    let elem = pList[i];
+    if ( !schema[elem] ) schema[elem] = {}
+    schema = schema[elem];
+  }
+  switch(pList[len-1]) {
+    case "id":
+    case "name":
+    case "avatar":
+    case "sheet":
+      schema[pList[len-1]] = propertyValue;
+      break;
+    default:
+      schema[pList[len-1]].value = propertyValue;
+      break;
+  }
+  console.log(propertyPath + ": " + propertyValue);
+  saveChanges();
+  return propertyValue;
+}
+
+
+
 const defaultCharacterSheet = {
   id: "",
   name: "",
@@ -285,8 +328,14 @@ const defaultCharacterSheet = {
     value: {
       about: {
         title: "ABOUT",
-        type: "text",
-        value: "",
+        type: "section",
+        value: {
+          base: {
+            title: "",
+            type: "text",
+            value: "",
+          },
+        },
       },
     },
   },
@@ -297,32 +346,32 @@ const defaultCharacterSheet = {
         type: "section",
         value: {
           intellect: {
-            title: "INTELLECT",
+            title: "Intellect",
             type: "item",
             value: {
               current: {
-                title: "CURRENT",
+                title: "current",
                 type: "number",
                 value: 5,
               },
               base: {
-                title: "BASE",
+                title: "base",
                 type: "number",
                 value: 10,
               }
             }
           },        
           agility: {
-            title: "AGILITY",
+            title: "Agility",
             type: "item",
             value: {
               current: {
-                title: "CURRENT",
+                title: "current",
                 type: "number",
                 value: 10,
               },
               base: {
-                title: "BASE",
+                title: "base",
                 type: "number",
                 value: 20,
               }
@@ -330,16 +379,16 @@ const defaultCharacterSheet = {
           },
           
           body: {
-            title: "BODY",
+            title: "Body",
             type: "item",
             value: {
               current: {
-                title: "CURRENT",
+                title: "current",
                 type: "number",
                 value: 20,
               },
               base: {
-                title: "BASE",
+                title: "base",
                 type: "number",
                 value: 30,
               }
@@ -405,26 +454,59 @@ const defaultCharacterSheet = {
   },
   inventory: {
     value: {
-      items: {
-        title: "ITEMS",
-        type: "item",
+      money: {
+        title: "MONEY",
+        type: "section",
         value: {
-          text: {
-            title: "ITEM",
-            type: "text",
-            value: ""
-          },
           base: {
-            title: "KG",
+            title: "",
             type: "number",
-            value: ""
+            value: "",
+          },
+        },
+      },
+      backpack: {
+        title: "Backpack",
+        type: "section",
+        value: {
+          base: {
+            title: "",
+            type: "item",
+            value: {
+              text: {
+                title: "name",
+                type: "text",
+                value: ""
+              },
+              base: {
+                title: "weight",
+                type: "number",
+                value: ""
+              },
+            },
           },
         },
       },
     },
   },
   actions: {
-      value: {    
+    value: {    
+      attackActions: {
+        title: "ATTACK ACTIONS",
+        type: "section",
+        value: {
+          meleeAttack: {
+            title: "melee attack",
+            type: "button",
+            value: `alert("пошул нахуй")`,
+          },
+          rangeAttack: {
+            title: "range attack",
+            type: "button",
+            value: "",
+          },
+        },
+      },
     },
   },
 };
