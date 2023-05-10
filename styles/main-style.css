@@ -51,7 +51,7 @@ body {
 
 .navbar, .subbar {
     box-sizing: border-box;
-    position: sticky;
+    position: fixed;
     height: var(--navbar-height);
     width: 100%;
     z-index: 100;    
