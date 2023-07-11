@@ -45,6 +45,14 @@ body {
 	display: flex;
     flex-direction: column;
     margin: 0;
+    
+    position: fixed;
+    inset: 0px;
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+    user-select: none;
+    touch-action: none;
 }
 
 ::-webkit-scrollbar { width: 0; }
@@ -93,9 +101,9 @@ body {
 
 main {
     box-sizing: border-box;
-    /*overflow-x: hidden;
+    overflow-x: hidden;
     overflow-y: scroll;
-    height: -webkit-fill-available;*/
+    /*height: -webkit-fill-available;*/
     max-width: 1030px;
     width: 100%;
     padding: 10px;
