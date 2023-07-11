@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
 
+:root {
+    color-scheme: light dark;
+    --navbar-height: max(60px, calc(60px + env(safe-area-inset-bottom)));
+    --block-height: 80px;
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         --page-bg-color: #E6E6F0;
@@ -26,16 +32,10 @@
     }
 }
 
-:root {
-    color-scheme: light dark;
-    --navbar-height: max(60px, calc(60px + env(safe-area-inset-bottom)));
-    --block-height: 80px;
-}
-
 html {
     /*height: -webkit-fill-available;*/
     display: block;
-    background: var(--page-bg-color);
+    background: var(--block-bg-color);
 }
 
 body {
