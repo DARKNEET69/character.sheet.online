@@ -109,11 +109,6 @@ main {
     /*height: -webkit-fill-available;*/
     max-width: 1030px;
     width: 100%;
-    padding: 10px;
-    padding-left: max(10px, env(safe-area-inset-left));
-    padding-right: max(10px, env(safe-area-inset-right));
-    padding-bottom: max(calc(var(--navbar-height) * 2 + 10px), calc(var(--navbar-height) * 2 + env(safe-area-inset-bottom) + 10px));
-    padding-top: max(calc(var(--navbar-height) + 10px), calc(env(safe-area-inset-top) + var(--navbar-height) + 10px));
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -122,6 +117,13 @@ main {
     align-self: center;
     justify-content: center;
     gap: 10px;
+
+    margin-top: max(var(--navbar-height), calc(env(safe-area-inset-top) + var(--navbar-height)));
+    margin-bottom: max(var(--navbar-height), calc(env(safe-area-inset-top) + var(--navbar-height)));
+    padding-top: 10px;
+    padding-bottom: calc(var(--navbar-height) + 10px);    
+    padding-left: max(10px, env(safe-area-inset-left));
+    padding-right: max(10px, env(safe-area-inset-right));
 }
 
 .block {
