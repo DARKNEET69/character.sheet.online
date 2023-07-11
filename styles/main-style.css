@@ -2,7 +2,7 @@
 
 :root {
     color-scheme: light dark;
-    --navbar-height: max(60px, calc(60px + env(safe-area-inset-bottom)));
+    --navbar-height: max(50px, calc(50px + env(safe-area-inset-bottom)));
     --block-height: 80px;
 }
 
