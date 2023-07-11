@@ -46,7 +46,6 @@ body {
     /*height: -webkit-fill-available;*/
 	display: flex;
     flex-direction: column;
-    margin: 0;
     
     position: fixed;
     inset: 0px;
@@ -70,8 +69,10 @@ body {
     align-items: center;
     gap: 10px;
     background: var(--block-bg-color);
-    padding:5px;
+    padding: 5px;
     margin: 0;
+    padding-left: max(5px, env(safe-area-inset-left));
+    padding-right: max(5px, env(safe-area-inset-right));
 }
 
 .navbar {    
@@ -81,7 +82,7 @@ body {
     border-top: var(--block-border);
     box-shadow: 0 -5px 5px var(--block-shadow-color);
     border-radius: 10px 10px 0px 0px;
-    padding-bottom: max(5px, env(safe-area-inset-bottom));
+    margin-bottom: max(0, env(safe-area-inset-bottom));
 }
 
 .subbar {
@@ -91,7 +92,7 @@ body {
     border-bottom: var(--block-border);
     box-shadow: 0 5px 5px var(--block-shadow-color);
     border-radius: 0px 0px 10px 10px;
-    padding-top: max(5px, env(safe-area-inset-top));
+    margin-top: max(0, env(safe-area-inset-top));
 }
 
 .subbar div h1 {
