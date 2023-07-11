@@ -18,8 +18,8 @@
         --page-bg-color: #0b0b0b;
         --block-bg-color: #1b1c1e;
         --input-bg-color: #0b0b0b;
-        --major-text-color: #fffbff;
-        --minor-text-color: #848684;
+        --major-text-color: #ffffff;
+        --minor-text-color: #a5a5a5;
         --block-shadow: 3px 4px 5px rgba(0, 0, 0, 0.5);
         --block-border: 1px solid var(--page-bg-color);
         --block-shadow-color: rgba(0, 0, 0, 0.5);
@@ -151,7 +151,7 @@ select, .block-text, .block-label, .block-number, .block-calc {
     background-color: var(--input-bg-color);;
     box-shadow: inset var(--block-shadow);
     border: var(--block-border);
-    border-radius: 5px;
+    border-radius: 10px;
     overflow: hidden;
 }
 
@@ -167,7 +167,7 @@ select, .block-text, .block-label, .block-number, .block-calc {
     background-color: var(--page-bg-color);
     box-shadow: inset var(--block-shadow);
     border: var(--block-border);
-    border-radius: 5px;
+    border-radius: 10px;
     overflow: hidden;
 }
 
@@ -326,7 +326,7 @@ input[type="text"], .custom-textarea {
     vertical-align: middle;
     background-color: var(--input-bg-color);
     box-shadow: inset var(--block-shadow);
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 input[type="button"], input[type="submit"] {
@@ -334,7 +334,7 @@ input[type="button"], input[type="submit"] {
     text-align: center;
     vertical-align: middle;
     box-shadow: var(--block-shadow);
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
 }
 
