@@ -42,7 +42,7 @@ body {
 	font-family: 'Roboto', sans-serif;
     font-size: 14px;
     color: var(--major-text-color);
-	background: var(--page-bg-color);
+	background: var(--block-bg-color);
     /*height: -webkit-fill-available;*/
 	display: flex;
     flex-direction: column;
