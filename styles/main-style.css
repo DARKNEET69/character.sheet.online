@@ -28,7 +28,7 @@
 
 :root {
     color-scheme: light dark;
-    --navbar-height: 60px;
+    --navbar-height: max(60px, calc(60px + env(safe-area-inset-bottom)));
     --block-height: 80px;
 }
 
