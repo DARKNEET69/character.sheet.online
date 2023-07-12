@@ -32,6 +32,10 @@
 		<link rel="shortcut icon" href="icons/favicon.ico">
 
 		<script src="scripts/app.js"></script>
+		<script src="https://apis.google.com/js/api.js"
+			onload="this.onload=function(){}; gapi.load('client:auth2', initClient)"
+			onreadystatechange="if (this.readyState === 'complete') this.onload()">
+		</script>
 	</head>
 	<body>
 		<menu class="subbar">
