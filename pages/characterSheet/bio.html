@@ -67,7 +67,7 @@
 				</div>
 				<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column;">
 					<div class="block-title"> NAME </div>
-					<div id="characterName" class="custom-textarea" style="flex-grow: 1;" contenteditable="true" onInput="setCharacterProperty(currentCharacter,'name', this.textContent)"></div>
+					<div id="characterName" class="custom-textarea" style="flex-grow: 1;" contenteditable="true" onInput="setCharacterProperty('name', this.textContent)"></div>
 					<input type="button" style="margin-top: 10px;" value="SAVE SHEET TEMPLATE">
 				</div>
 			</div>
@@ -160,7 +160,7 @@
 				var reader = new FileReader();
 				reader.onloadend = function () {
 					preview.src = reader.result;
-					setCharacterProperty(currentCharacter, "avatar", reader.result);
+					setCharacterProperty("avatar", reader.result);
 				}
 				if (file) {
 					reader.readAsDataURL(file);
