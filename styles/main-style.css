@@ -42,7 +42,7 @@ body {
 	font-family: 'Roboto', sans-serif;
     font-size: 14px;
     color: var(--major-text-color);
-	background: var(--page-bg-color);
+	background: var(--block-bg-color);
     /*height: -webkit-fill-available;*/
 	display: flex;
     flex-direction: column;
@@ -106,7 +106,7 @@ main {
     box-sizing: border-box;
     overflow-x: hidden;
     overflow-y: scroll;
-    /*height: -webkit-fill-available;*/
+    height: 100%;
     max-width: 1030px;
     width: 100%;
     display: flex;
@@ -117,11 +117,10 @@ main {
     align-self: center;
     justify-content: center;
     gap: 10px;
+    background: var(--page-bg-color);
 
-    margin-top: max(var(--navbar-height), calc(env(safe-area-inset-top) + var(--navbar-height)));
-    margin-bottom: max(var(--navbar-height), calc(env(safe-area-inset-top) + var(--navbar-height)));
-    padding-top: 10px;
-    padding-bottom: calc(var(--navbar-height) + 10px);    
+    padding-top: max(calc(10px + var(--navbar-height)), calc(10px + var(--navbar-height) + env(safe-area-inset-top)));
+    padding-bottom: max(calc(var(--navbar-height) * 2 + 10px), calc(var(--navbar-height) * 2 + env(safe-area-inset-top) + 10px));
     padding-left: max(10px, env(safe-area-inset-left));
     padding-right: max(10px, env(safe-area-inset-right));
 }
