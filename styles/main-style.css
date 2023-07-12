@@ -120,7 +120,7 @@ main {
     background: var(--page-bg-color);
 
     padding-top: max(calc(10px + var(--navbar-height)), calc(10px + var(--navbar-height) + env(safe-area-inset-top)));
-    padding-bottom: max(calc(var(--navbar-height) * 2 + 10px), calc(var(--navbar-height) * 2 + env(safe-area-inset-top) + 10px));
+    padding-bottom: max(calc(var(--navbar-height) * 2 + 10px), calc(var(--navbar-height) * 2 + env(safe-area-inset-bottom) + 10px));
     padding-left: max(10px, env(safe-area-inset-left));
     padding-right: max(10px, env(safe-area-inset-right));
 }
