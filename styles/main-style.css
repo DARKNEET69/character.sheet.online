@@ -107,7 +107,6 @@ main {
     overflow-x: hidden;
     overflow-y: scroll;
     height: 100%;
-    max-width: 1030px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -206,7 +205,7 @@ img, svg {
 
 .bar-button {
     border-radius: 90px;
-    padding: 10px;
+    padding: 5px;
     cursor: pointer;
 }
 
