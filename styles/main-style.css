@@ -4,15 +4,19 @@
     color-scheme: light dark;
     --navbar-height: max(50px, calc(50px + env(safe-area-inset-bottom)));
     --block-height: 80px;
+    --blue-color: rgb(73, 139, 255);
+    --green-color: rgb(51, 179, 67);
+    --yellow-color: rgb(255, 221, 87);
+    --red-color: rgb(221, 0, 0);
 }
 
 @media (prefers-color-scheme: light) {
     :root {
-        --page-bg-color: #E6E6F0;
-        --block-bg-color: #FFFFFF;
-        --input-bg-color: #E6E6F0;
-        --major-text-color: #1E1E28;
-        --minor-text-color: #BEBEC8;
+        --page-bg-color: #eff2f7;
+        --block-bg-color: rgb(255, 255, 255);
+        --input-bg-color: rgba(176, 189, 214, 0.2);
+        --major-text-color: rgb(47, 55, 71);
+        --minor-text-color: rgba(71, 90, 128, 0.5);
         --block-shadow: 3px 4px 5px rgba(0, 0, 0, 0.1);
         --block-border: 1px solid var(--page-bg-color);
         --block-shadow-color: rgba(0, 0, 0, 0.1);
@@ -21,11 +25,11 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --page-bg-color: #0b0b0b;
-        --block-bg-color: #1b1c1e;
-        --input-bg-color: #0b0b0b;
-        --major-text-color: #ffffff;
-        --minor-text-color: #a5a5a5;
+        --page-bg-color: #111112;
+        --block-bg-color: #222224;
+        --input-bg-color: #111112;
+        --major-text-color: #fff;
+        --minor-text-color: rgba(255, 255, 255, .75);
         --block-shadow: 3px 4px 5px rgba(0, 0, 0, 0.5);
         --block-border: 1px solid var(--page-bg-color);
         --block-shadow-color: rgba(0, 0, 0, 0.5);
