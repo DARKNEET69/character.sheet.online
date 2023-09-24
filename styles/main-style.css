@@ -17,7 +17,7 @@
         --input-bg-color: rgba(176, 189, 214, 0.2);
         --major-text-color: rgb(47, 55, 71);
         --minor-text-color: rgba(71, 90, 128, 0.5);
-        --block-shadow: 3px 4px 5px rgba(0, 0, 0, 0.1);
+        --block-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.1);
         --block-border: 1px solid var(--page-bg-color);
         --block-shadow-color: rgba(0, 0, 0, 0.1);
     }
@@ -30,7 +30,7 @@
         --input-bg-color: #111112;
         --major-text-color: #fff;
         --minor-text-color: rgba(255, 255, 255, .75);
-        --block-shadow: 3px 4px 5px rgba(0, 0, 0, 0.5);
+        --block-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.5);
         --block-border: 1px solid var(--page-bg-color);
         --block-shadow-color: rgba(0, 0, 0, 0.5);
     }
@@ -60,6 +60,7 @@ body {
     touch-action: none;
 }
 
+*:focus { outline: none; }
 ::-webkit-scrollbar { width: 0; }
 
 .nav-wrapper, .menu-wrapper {
@@ -79,7 +80,7 @@ body {
     bottom: 0;
     left: 0;
     border-top: var(--block-border);
-    box-shadow: 0 -5px 5px var(--block-shadow-color);
+    box-shadow: 0px -2px 3px 1px var(--block-shadow-color);
     border-radius: 10px 10px 0px 0px;
     margin-bottom: max(0, env(safe-area-inset-bottom));
 }
@@ -88,7 +89,7 @@ body {
     top: 0;
     left: 0;
     border-bottom: var(--block-border);
-    box-shadow: 0 5px 5px var(--block-shadow-color);
+    box-shadow: 0px 2px 3px 1px var(--block-shadow-color);
     border-radius: 0px 0px 10px 10px;
     margin-top: max(0, env(safe-area-inset-top));
 }
@@ -120,12 +121,6 @@ menu div h1 {
     text-overflow: ellipsis; 
     white-space: nowrap; 
     overflow: hidden;
-}
-
-nav div, menu div {
-    box-sizing: border-box;
-    height: 100%;
-    width: auto;
 }
 
 .main-wrapper {
@@ -182,11 +177,17 @@ select, .block-text, .block-label, .block-number, .block-calc {
     box-sizing: border-box;
     min-height: 1.2em;
     padding: 5px;
-    background-color: var(--input-bg-color);;
+    background-color: var(--input-bg-color);
+    /*
     box-shadow: inset var(--block-shadow);
+    */
     border: var(--block-border);
     border-radius: 10px;
     overflow: hidden;
+}
+
+.block-text:focus, .block-number:focus, .block-calc:focus {    
+    border-bottom: 2px solid var(--minor-text-color);
 }
 
 .block-label, .block-number, .block-calc {
@@ -199,7 +200,6 @@ select, .block-text, .block-label, .block-number, .block-calc {
     flex-wrap: nowrap;
     text-align: center;
     background-color: var(--page-bg-color);
-    box-shadow: inset var(--block-shadow);
     border: var(--block-border);
     border-radius: 10px;
     overflow: hidden;
@@ -230,7 +230,8 @@ img {
 }
 
 .bar-button {
-    display: flex;    
+    display: flex;
+    height: fit-content;
     justify-content: center;
     align-items: center;
     border-radius: 90px;
@@ -247,8 +248,8 @@ img {
 }
 
 .bar-button svg {
-    height: 25px;
-    width: 25px;
+    height: 24px;
+    width: 24px;
 }
 
 .roll-button {
@@ -272,6 +273,7 @@ img {
 
 .roll-button:hover {
     box-shadow: inset var(--block-shadow);
+    border: 1px solid var(--page-bg-color);
 }
 
 .roll-button svg {
@@ -300,7 +302,7 @@ img {
 
 .card-block:hover {
     box-shadow: inset var(--block-shadow);
-    border: 0;
+    border: 1px solid var(--page-bg-color);
 }
 
 .character-avatar {
@@ -362,13 +364,15 @@ input, .custom-textarea {
 }
 
 input:focus, .custom-textarea:focus, select:focus {
-    outline: none;
+    border-bottom: 2px solid var(--minor-text-color);
 }
 
 input[type="text"], .custom-textarea {
     vertical-align: middle;
     background-color: var(--input-bg-color);
+    /*
     box-shadow: inset var(--block-shadow);
+    */
     border-radius: 10px;
 }
 
@@ -383,6 +387,7 @@ input[type="button"], input[type="submit"] {
 
 input[type="button"]:hover, input[type="submit"]:hover {
     box-shadow: inset var(--block-shadow);
+    border: 1px solid var(--page-bg-color);
 }
 
 dialog {
