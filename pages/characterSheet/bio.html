@@ -6,13 +6,8 @@
         <meta name="description" content="Create dynamic character sheet for any TRPG system" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
         <link rel="stylesheet" href="../../styles/main-style.css" />
-        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
-		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1c1e" />
+        <meta name="theme-color" content="var(--block-bg-color)" />
 		<meta name="apple-mobile-web-app-capable" content="yes">
-		<!--
-        <meta name="apple-mobile-web-app-status-bar-style" media="(prefers-color-scheme: light)" content="default" />
-        <meta name="apple-mobile-web-app-status-bar-style" media="(prefers-color-scheme: dark)" content="black-translucent" />
-		-->
 
         <!-- Open Graph -->
         <meta property="og:type" content="website" />
@@ -65,7 +60,7 @@
 					<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column;">
 						<div class="block-title"> NAME </div>
 						<div id="characterName" class="custom-textarea" style="flex-grow: 1;" contenteditable="true" onInput="setCharacterProperty('name', this.textContent)"></div>
-						<input type="button" class="button" style="margin-top: 10px;" value="SAVE SHEET TEMPLATE">
+						<input type="button" style="margin-top: 10px;" value="SAVE SHEET TEMPLATE">
 					</div>
 				</div>
 				<div type="button" class="roll-button" id="rollButton">
@@ -107,8 +102,8 @@
 						<option value="button">Button</option>
 						<option value="calc">Calc</option>
 					</select>
-					<input type="submit" class="button" id="blockSave" value="Save" style="color: var(--blue-color);">
-					<input type="submit" class="button" id="blockDelete" value="Delete" style="color: var(--red-color);">
+					<input type="submit" id="blockSave" value="Save" style="color: var(--blue-color);">
+					<input type="submit" id="blockDelete" value="Delete" style="color: var(--red-color);">
 				</div>
 			</form>
 		</dialog>
