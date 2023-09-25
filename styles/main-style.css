@@ -350,6 +350,10 @@ img {
 }
 
 input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
     border: var(--block-border);
     background: var(--block-bg-color);
     padding: 5px;
