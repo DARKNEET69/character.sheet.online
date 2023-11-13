@@ -51,7 +51,7 @@ body {
     font-size: 14px;
     color: var(--major-text-color);
 	background: var(--block-bg-color);
-    /*height: -webkit-fill-available;*/
+    min-height: -webkit-fill-available;
 	display: flex;
     flex-direction: column;
     
@@ -85,7 +85,7 @@ body {
     border-top: var(--block-border);
     box-shadow: 0px -2px 3px 1px var(--block-shadow-color);
     border-radius: 10px 10px 0px 0px;
-    /*padding-bottom: env(safe-area-inset-bottom);*/
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 .menu-wrapper {
