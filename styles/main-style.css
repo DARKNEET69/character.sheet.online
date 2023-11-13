@@ -2,12 +2,16 @@
 
 :root {
     color-scheme: light dark;
-    --navbar-height: max(50px, calc(50px + env(safe-area-inset-bottom)));
     --block-height: 80px;
     --blue-color: #556EE6;
     --green-color: #3EC1D3;
     --yellow-color: #F5CD7A;
     --red-color: #E66868;
+    --major-ui-size: 28px;
+    --minor-ui-size: 14px;
+    --major-ui-padding: 10px;
+    --minor-ui-padding: 5px;
+    --navbar-height: calc(var(--major-ui-padding) * 2 + var(--minor-ui-padding) * 2 + var(--major-ui-size));
 }
 
 @media (prefers-color-scheme: light) {
@@ -66,7 +70,6 @@ body {
 .nav-wrapper, .menu-wrapper {
     box-sizing: border-box;
     position: fixed;
-    height: var(--navbar-height);
     width: 100%;
     z-index: 100;
     background: var(--block-bg-color);
@@ -82,7 +85,7 @@ body {
     border-top: var(--block-border);
     box-shadow: 0px -2px 3px 1px var(--block-shadow-color);
     border-radius: 10px 10px 0px 0px;
-    margin-bottom: max(0, env(safe-area-inset-bottom));
+    margin-bottom: env(safe-area-inset-bottom);
 }
 
 .menu-wrapper {
@@ -91,17 +94,17 @@ body {
     border-bottom: var(--block-border);
     box-shadow: 0px 2px 3px 1px var(--block-shadow-color);
     border-radius: 0px 0px 10px 10px;
-    margin-top: max(0, env(safe-area-inset-top));
+    margin-top: env(safe-area-inset-top);
 }
 
 nav, menu {
     box-sizing: border-box;
-    height: 100%;
+    /*height: 100%;*/
     width: clamp(200px, 100%, 1200px);
     display: flex;
     margin: 0 auto;
     flex-direction: row;
-    padding: 0;
+    padding: var(--minor-ui-padding);
     gap: 10px;
 }
 
@@ -144,8 +147,8 @@ main {
     justify-content: center;
     gap: 10px;
     margin: auto;
-    padding-top: max(calc(10px + var(--navbar-height)), calc(10px + var(--navbar-height) + env(safe-area-inset-top)));
-    padding-bottom: max(calc(var(--navbar-height) * 2 + 10px), calc(var(--navbar-height) * 2 + env(safe-area-inset-bottom) + 10px));
+    padding-top: calc(var(--navbar-height) + env(safe-area-inset-top) + 10px);
+    padding-bottom: calc(var(--navbar-height) * 2 + env(safe-area-inset-bottom) + 20px);
     padding-left: max(10px, env(safe-area-inset-left));
     padding-right: max(10px, env(safe-area-inset-right));
 }
@@ -258,8 +261,8 @@ img {
 }
 
 .bar-button svg {
-    height: 24px;
-    width: 24px;
+    height: var(--major-ui-size);
+    width: auto;
 }
 
 .roll-button {
@@ -267,12 +270,11 @@ img {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    position: fixed; 
-    bottom: calc(var(--navbar-height) + 10px);
+    position: fixed;    
+    height: fit-content;
+    bottom: calc(var(--navbar-height) + env(safe-area-inset-bottom) + 10px);
     right: 10px; 
     z-index: 100;
-    width: var(--navbar-height);
-    height: var(--navbar-height);
     border-radius: 90px;
     padding: 10px;
     cursor: pointer;
@@ -287,8 +289,8 @@ img {
 }
 
 .roll-button svg {
-    width: 25px;
-    height: 25px;
+    height: calc(var(--major-ui-size) * 1.2);
+    width: auto;
 }
 
 .card-block {
@@ -385,6 +387,10 @@ input[type="button"]:hover, input[type="submit"]:hover {
     border: 1px solid var(--page-bg-color);
 }
 
+::placeholder {
+    color: var(--minor-text-color);
+}
+
 dialog {
     box-sizing: border-box;
     color: var(--minor-text-color);
@@ -407,23 +413,27 @@ dialog::backdrop {
 }
 
 h1 {
-    font-size: 20px;
+    font-size: calc(var(--major-ui-size) - 10px);
 }
 
 h2 {
-    font-size: 19em;
+    font-size: calc(var(--major-ui-size) - 12px);
 }
 
 h3 {
-    font-size: 18em;
+    font-size: calc(var(--major-ui-size) - 14px);
 }
 
 h4 {
-    font-size: 17em;
+    font-size: calc(var(--major-ui-size) - 16px);
 }
 
 h5 {
-    font-size: 16em;
+    font-size: calc(var(--major-ui-size) - 18px);
+}
+
+h6 {
+    font-size: calc(var(--major-ui-size) - 20px);
 }
 
 table {
