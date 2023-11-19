@@ -3,10 +3,10 @@
 :root {
     color-scheme: light dark;
     --block-height: 80px;
-    --blue-color: #556EE6;
-    --green-color: #3EC1D3;
-    --yellow-color: #F5CD7A;
-    --red-color: #E66868;
+    --blue-color: #0378fc;
+    --green-color: #39db52;
+    --yellow-color: #fcd629;
+    --red-color: #fc3226;
     --major-ui-size: 28px;
     --minor-ui-size: 14px;
     --major-ui-padding: 10px;
@@ -30,7 +30,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --page-bg-color: #111112;
-        --block-bg-color: #222224;
+        --block-bg-color: #242424;
         --input-bg-color: #111112;
         --major-text-color: #fff;
         --minor-text-color: rgba(255, 255, 255, .75);
@@ -242,26 +242,23 @@ img {
 }
 
 .bar-button {
+    box-sizing: border-box;
     display: flex;
     height: fit-content;
     justify-content: center;
     align-items: center;
-    border-radius: 90px;
     padding: 10px;
     cursor: pointer;
-}
-
-.bar-button:hover {
-    box-shadow: inset var(--block-shadow);
-}
-
-.bar-button a {
-    color: var(--major-text-color);
 }
 
 .bar-button svg {
     height: var(--major-ui-size);
     width: auto;
+    color: var(--minor-text-color);
+}
+
+.bar-button svg:hover, .bar-button.currentPage svg {
+    color: var(--major-text-color);
 }
 
 .roll-button {
@@ -271,7 +268,7 @@ img {
     box-sizing: border-box;
     position: fixed;    
     height: fit-content;
-    bottom: calc(var(--navbar-height) + env(safe-area-inset-bottom) + 10px);
+    bottom: calc(var(--navbar-height) + 10px);
     right: 10px; 
     z-index: 100;
     border-radius: 90px;
@@ -290,6 +287,11 @@ img {
 .roll-button svg {
     height: calc(var(--major-ui-size) * 1.2);
     width: auto;
+    color: var(--minor-text-color);
+}
+
+.roll-button svg:hover {
+    color: var(--major-text-color);
 }
 
 .card-block {
