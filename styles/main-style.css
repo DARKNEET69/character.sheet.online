@@ -280,7 +280,6 @@ img {
 }
 
 .roll-button:hover {
-    box-shadow: inset var(--block-shadow);
     border: 1px solid var(--page-bg-color);
 }
 
