@@ -278,7 +278,7 @@ function saveChanges() {
 
 //--- users functions ---//
 
-function roll(dice, count) {
+function roll(count, dice) {
   let sum = 0;
   for (let i = 1; i <= count; i++) {
     sum += Math.ceil(Math.random() * dice);
@@ -518,12 +518,12 @@ const defaultCharacterSheet = {
           meleeAttack: {
             title: "melee attack",
             type: "button",
-            value: `let skillValue = getCharacterPropertyValue('attributes.baseSkills.fight.current'); const dialogManager = new DialogManager(); const dialog = dialogManager.createDialog('Roll melee attack', '1D20 + ' + skillValue + ' = ' + Math.ceil(Math.random() * 20 + skillValue)); dialogManager.openDialog(dialog.id);`,
+            value: `let skillValue = getCharacterPropertyValue('attributes.baseSkills.fight.current'); let dialogManager = new DialogManager(); let dialog = dialogManager.createDialog('Roll melee attack', '1D20 + ' + skillValue + ' = ' + (roll(1, 20) + +skillValue)); dialogManager.openDialog(dialog.id);`,
           },
           rangeAttack: {
             title: "range attack",
             type: "button",
-            value: `let skillValue = getCharacterPropertyValue('attributes.baseSkills.fight.current'); const dialogManager = new DialogManager(); const dialog = dialogManager.createDialog('Roll range attack', '1D20 + ' + skillValue + ' = ' + Math.ceil(Math.random() * 20 + skillValue)); dialogManager.openDialog(dialog.id);`,
+            value: `let skillValue = getCharacterPropertyValue('attributes.baseSkills.fight.current'); let dialogManager = new DialogManager(); let dialog = dialogManager.createDialog('Roll range attack', '1D20 + ' + skillValue + ' = ' + (roll(1, 20) + +skillValue)); dialogManager.openDialog(dialog.id);`,
           },
         },
       },
